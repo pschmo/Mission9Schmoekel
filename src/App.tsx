@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import TeamCard from "./TeamCard";
+import Team from "./TeamTypes";
+import teamsData from "./CollegeBasketballTeams.json"; // Import the JSON file
+
+function Heading() {
+  return (
+    <div>
+      <h1>March Madness is upon us!! Check out all the teams</h1>
+    </div>
+  );
+}
+
+function TeamList() {
+  console.log("Teams data:", teamsData.teams);
+  return (
+    <div>
+      <h2>Starting from the top!</h2>
+      {teamsData.teams.map((team) => (
+        <TeamCard key={team.tid} team={team} />
+      ))}
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Heading />
+      <TeamList />
     </div>
   );
 }
